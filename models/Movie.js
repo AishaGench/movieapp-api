@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const MovieSchema = new Schema({
-    director_id:Schema.Type.ObjectId,
+    director_id:Schema.Types.ObjectId,
   title:{
     type:String,
     required:[true, 'The field `{PATH}` is required'],
