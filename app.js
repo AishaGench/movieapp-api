@@ -9,6 +9,9 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+//DB connection
+const db = require('./helpers/db')()
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
