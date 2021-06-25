@@ -6,7 +6,16 @@ const MovieModel = require('../models/Movie')
 
 //Get request with node-express-get snippet
 router.get('/', (req, res) => {
-  res.send('GET request to the homepage !!!')
+  MovieModel.find()
+  .then((movieList)=>res.json(movieList))
+  .catch((err)=>{res.json(err)})
+})
+
+//GET details of a movie /ap/movies/:movieId
+router.get('/:movieId',(req,res)=>{
+  MovieModel.findById(req.params.movieId)
+  .then((movie)=>{res.json(movie)})
+  .catch((err)=>{res.json(err)})
 })
 
 // POST request to save Movies in the DB

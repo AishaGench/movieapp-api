@@ -11,6 +11,7 @@ const MovieSchema = new Schema({
   category:{type:String, maxlength:30, minlength:1},
   year:{type:Number, min:1850, max:2100},
   imdb_score:{type:Number, max:10, min:0},
+  country:{type:String, maxlength:60, minlength:2},
   createdAt:{type:Date, default:Date.now}
 
 })
