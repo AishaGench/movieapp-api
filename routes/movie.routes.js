@@ -26,6 +26,12 @@ router.post('/',(req, res,next)=>{
   .catch((error)=>{res.json(error)})
 })
 
+//PUT Method to update a movie /api/movies/:movieId
+router.put('/:movieId',(req,res,next)=>{
+  MovieModel.findByIdAndUpdate(req.params.movieId, req.body,{new:true})
+  .then((movie)=>{res.json(movie)})
+  .catch((err)=>{res.json(err)})
+})
 
 
 // Export the route
