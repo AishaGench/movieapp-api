@@ -33,6 +33,13 @@ router.put('/:movieId',(req,res,next)=>{
   .catch((err)=>{res.json(err)})
 })
 
+//DELETE request to remove a movie from DB /api/movies/:movieId
+router.delete('/:movieId',(req,res,next)=>{
+  MovieModel.findByIdAndRemove(req.params.movieId)
+  .then((movie)=>{res.json(movie)})
+  .catch((err)=>{res.json(err)})
+})
+
 
 // Export the route
 module.exports = router
