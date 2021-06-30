@@ -28,7 +28,8 @@ router.get('/:movieId',(req,res)=>{
 
 //List movies between specific date
 router.get('/between/:startYear/:endYear',(req,res)=>{
-  MovieModel.find({year:{"$gte":req.params.startYear, "$lte":req.params.endYear}})
+  const {startYear,endYear}= req.params
+  MovieModel.find({year:{"$gte":parseInt(startYear), "$lte":parseInt(endYear)}})
   .then((movieList)=>{res.json(movieList)})
   .catch((err)=>{res.json(err)})
 })
