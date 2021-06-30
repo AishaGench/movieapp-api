@@ -11,6 +11,13 @@ router.get('/', (req, res) => {
   .catch((err)=>{res.json(err)})
 })
 
+//GET top 10 movies
+router.get('/top10',(req,res)=>{
+  MovieModel.find().sort({imdb_score:1}).limit(10)
+  .then((movieList)=>res.json(movieList))
+  .catch((err)=>{res.json(err)})
+})
+
 //GET details of a movie /ap/movies/:movieId
 router.get('/:movieId',(req,res)=>{
   MovieModel.findById(req.params.movieId)
