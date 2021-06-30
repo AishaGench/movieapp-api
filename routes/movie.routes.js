@@ -10,6 +10,7 @@ router.get('/', (req, res) => {
   .then((movieList)=>res.json(movieList))
   .catch((err)=>{res.json(err)})
 })
+//SORT => 1, ASC || -1, DESC
 
 //GET top 10 movies
 router.get('/top10',(req,res)=>{
@@ -22,6 +23,13 @@ router.get('/top10',(req,res)=>{
 router.get('/:movieId',(req,res)=>{
   MovieModel.findById(req.params.movieId)
   .then((movie)=>{res.json(movie)})
+  .catch((err)=>{res.json(err)})
+})
+
+//List movies between specific date
+router.get('/between/:startYear/:endYear',(req,res)=>{
+  MovieModel.find({year:{"$gte":req.params.startYear, "$lte":req.params.endYear}})
+  .then((movieList)=>{res.json(movieList)})
   .catch((err)=>{res.json(err)})
 })
 
