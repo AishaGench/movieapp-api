@@ -6,8 +6,8 @@ const DirectorModel = require('../models/Director')
 
 // GET all directors with their movies
 router.get('/', (req, res,next)=>{
-  //res.end('GET request to Director Page...')
-  //DirectorModel.find()
+  /*//res.end('GET request to Director Page...')
+  //DirectorModel.find()*/
   DirectorModel.aggregate([
     {
       $lookup:{
