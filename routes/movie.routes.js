@@ -39,7 +39,8 @@ router.post('/',(req, res,next)=>{
   const newMovie = new MovieModel(req.body)
   newMovie.save()
   .then((movie)=>{res.json(movie)})
-  .catch((error)=>{res.json(error)})
+  .catch((error)=>{next({message:error})
+                  /*res.json(error)*/})
 })
 
 //PUT Method to update a movie /api/movies/:movieId
