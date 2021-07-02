@@ -66,5 +66,9 @@ router.put('/:directorId',(req, res, next)=>{
 })
 
 // Delete a Director  api/directos/:directorId
-
+router.delete('/:directorId',(req,res,next)=>{
+  DirectorModel.findByIdAndRemove(req.params.directorId)
+  .then(director=>res.json(director))
+  .catch(err=>{next({message:err})})
+})
 module.exports = router
