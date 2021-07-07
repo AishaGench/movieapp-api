@@ -39,7 +39,7 @@ UserModel.findOne({username})
       }else{
         //res.json("Ok, token is ready...")
         const payload={username}
-        var token = jwt.sign(payload,"MovieAppSecretKey",{expiresIn:7200 /*1h*/})
+        var token = jwt.sign(payload,req.app.get("api_secret_key"),{expiresIn:7200 /*1h*/})
         res.json({status:true, token})
       }
     })

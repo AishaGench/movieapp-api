@@ -11,6 +11,9 @@ var directorsRouter = require('./routes/director.routes');
 
 var app = express();
 
+//config
+const config = require('./config')
+app.set('api_secret_key', config.api_secret_key)
 //DB connection
 const db = require('./helpers/db')()
 

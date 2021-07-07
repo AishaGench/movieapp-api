@@ -1,0 +1,1 @@
+module.exports={api_secret_key:"pice of cake"}
