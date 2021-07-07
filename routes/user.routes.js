@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var bcrypt = require('bcrypt')
+var jwt = require("jsonwebtoken")
 
 //Model
 const UserModel =require('../models/User')
@@ -36,7 +37,10 @@ UserModel.findOne({username})
       if(!result){
         res.json("Authetication failed: Wrong password")
       }else{
-        res.json("Ok, token is ready...")
+        //res.json("Ok, token is ready...")
+        const payload={username}
+        var token = jwt.sign(payload,"MovieAppSecretKey",{expiresIn:7200 /*1h*/})
+        res.json({status:true, token})
       }
     })
   }
