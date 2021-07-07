@@ -23,4 +23,18 @@ router.post('/register',(req,res,next)=>{
   
 })
 
+//Create a token user/authenticate
+router.post('/authenticate',(req,res)=>{
+const {username, password} = req.body
+UserModel.findOne({username})
+.then((resultUser)=>{
+  if(!resultUser){
+    res.send("The user was not found...")
+  }
+})
+.catch((err)=>{
+  next({message: err})
+})
+})
+
 module.exports = router;
