@@ -30,7 +30,17 @@ UserModel.findOne({username})
 .then((resultUser)=>{
   if(!resultUser){
     res.send("The user was not found...")
+  }else{
+    bcrypt.compare(password,resultUser.password)
+    .then(function(result){
+      if(!result){
+        res.json("Authetication failed: Wrong password")
+      }else{
+        res.json("Ok, token is ready...")
+      }
+    })
   }
+    //res.json(resultUser)
 })
 .catch((err)=>{
   next({message: err})
